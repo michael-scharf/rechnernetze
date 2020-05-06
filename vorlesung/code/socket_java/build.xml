@@ -1,0 +1,54 @@
+<project name="rn" default="dist" basedir=".">
+  <description>
+    Rechnernetze
+  </description>
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+ 
+    <target name="compile">
+      <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
+    </target>
+ 
+    <target name="dist" depends="compile">
+      <jar destfile="${dist}/EchoClient.jar" basedir="${build}"
+          includes="EchoClient.class">
+        <manifest>
+          <attribute name="Main-Class" value="EchoClient"/>
+        </manifest>
+      </jar>
+      <jar destfile="${dist}/EchoServer.jar" basedir="${build}"
+          includes="CountServer.class">
+        <manifest>
+          <attribute name="Main-Class" value="EchoServer"/>
+        </manifest>
+      </jar>
+      <jar destfile="${dist}/EchoClientDatagram.jar" basedir="${build}"
+          includes="EchoClientDatagram.class">
+        <manifest>
+          <attribute name="Main-Class" value="EchoClientDatagram"/>
+        </manifest>
+      </jar>
+      <jar destfile="${dist}/EchoServerDatagram.jar" basedir="${build}"
+          includes="EchoServerDatagram.class">
+        <manifest>
+          <attribute name="Main-Class" value="EchoServerDatagram"/>
+        </manifest>
+      </jar>
+      <jar destfile="${dist}/TlsClient.jar" basedir="${build}"
+          includes="TlsClient.class">
+        <manifest>
+          <attribute name="Main-Class" value="TlsClient"/>
+        </manifest>
+      </jar>
+    </target>
+ 
+    <target name="clean">
+      <delete includeEmptyDirs="true">
+        <fileset dir="${build}" includes="**/*"/>
+      </delete>      
+      <delete includeEmptyDirs="true">
+        <fileset dir="${dist}" includes="**/*"/>
+      </delete>      
+    </target>
+</project>
