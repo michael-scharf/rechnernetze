@@ -5,7 +5,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <netdb.h> 
+#include <netdb.h>
 
 int main(int argc, char *argv[])
 {
@@ -35,8 +35,8 @@ int main(int argc, char *argv[])
     perror("Error: Socket"); exit(1);
   }
 
-  if (connect(sock_fd, (struct sockaddr *) &server_addr, 
-              sizeof(server_addr)) < 0) { 
+  if (connect(sock_fd, (struct sockaddr *) &server_addr,
+              sizeof(server_addr)) < 0) {
     perror("Error: Connect"); exit(1);
   }
 

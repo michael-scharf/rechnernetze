@@ -17,21 +17,21 @@ public class EchoClientDatagram {
 
       DatagramSocket datagramSocket = new DatagramSocket();
 
-      BufferedReader stdInput = 
+      BufferedReader stdInput =
         new BufferedReader(new InputStreamReader(System.in));
       String inputLine;
 
       while ((inputLine = stdInput.readLine()) != null) {
         byte[] buffer = inputLine.getBytes();
 
-        DatagramPacket requestPacket = 
+        DatagramPacket requestPacket =
           new DatagramPacket(buffer, buffer.length, serverAddress, portNumber);
         datagramSocket.send(requestPacket);
 
         buffer = new byte[1024];
 
         DatagramPacket replyPacket = new DatagramPacket(buffer, buffer.length);
-        datagramSocket.receive(replyPacket); 
+        datagramSocket.receive(replyPacket);
 
         String outputLine = new String(replyPacket.getData());
         System.out.println("Echo: " + outputLine);

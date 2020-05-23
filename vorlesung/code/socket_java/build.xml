@@ -18,7 +18,7 @@
         </manifest>
       </jar>
       <jar destfile="${dist}/EchoServer.jar" basedir="${build}"
-          includes="CountServer.class">
+          includes="EchoServer.class">
         <manifest>
           <attribute name="Main-Class" value="EchoServer"/>
         </manifest>
@@ -33,12 +33,6 @@
           includes="EchoServerDatagram.class">
         <manifest>
           <attribute name="Main-Class" value="EchoServerDatagram"/>
-        </manifest>
-      </jar>
-      <jar destfile="${dist}/TlsClient.jar" basedir="${build}"
-          includes="TlsClient.class">
-        <manifest>
-          <attribute name="Main-Class" value="TlsClient"/>
         </manifest>
       </jar>
     </target>

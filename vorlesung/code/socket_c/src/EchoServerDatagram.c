@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/socket.h>
 #include <netdb.h>
 
@@ -30,13 +30,13 @@ int main(int argc, char *argv[])
   resultsave = result;
 
   do {
-    server_fd = socket(result->ai_family, result->ai_socktype, 
+    server_fd = socket(result->ai_family, result->ai_socktype,
                        result->ai_protocol);
     if (server_fd < 0)
       continue; /* ignore */
     if (bind(server_fd, result->ai_addr, result->ai_addrlen) == 0)
       break; /* success */
-    close(server_fd); 
+    close(server_fd);
   } while ((result = result->ai_next) != NULL);
 
   if (result == NULL) {
@@ -48,18 +48,18 @@ int main(int argc, char *argv[])
   while (1) {
     bzero(buffer, sizeof(buffer));
 
-    bytes = recvfrom(server_fd, buffer, sizeof(buffer), 0, 
+    bytes = recvfrom(server_fd, buffer, sizeof(buffer), 0,
                      (struct sockaddr *) &client_addr, &client_len);
-    if (bytes < 0) { 
+    if (bytes < 0) {
       perror("Error: RecvFrom"); exit(1);
     }
 
-    if (sendto(server_fd, buffer, bytes, 0, 
+    if (sendto(server_fd, buffer, bytes, 0,
         (struct sockaddr *) &client_addr, client_len) < 0) {
       perror("Error: SendTo"); exit(1);
     }
   }
 
   close(server_fd);
-  return 0; 
+  return 0;
 }

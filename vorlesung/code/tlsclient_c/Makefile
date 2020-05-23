@@ -1,7 +1,7 @@
 CC       = gcc
 CFLAGS   = -Wall -g
 LDFLAGS  =
-LDLIBS   =
+LDLIBS   = -lssl -lcrypto
 
 SRCDIR   = src
 OBJDIR   = obj

@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netdb.h> 
+#include <netdb.h>
 #include <openssl/ssl.h>
 
 int main(int argc, char *argv[])
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
   ctx = SSL_CTX_new(TLSv1_2_client_method());
   if (!ctx) { fprintf(stderr, "Error: SSL context"); exit(1); }
 
-  /* Load trusted certificates (tested on CentOS Linux) */ 
+  /* Load trusted certificates (tested on CentOS Linux) */
   if (!SSL_CTX_load_verify_locations(ctx, "/etc/pki/tls/cert.pem", NULL)) {
     fprintf(stderr, "Error: Trust store\n"); exit(1);
   }
@@ -39,12 +39,12 @@ int main(int argc, char *argv[])
   resultsave = result;
 
   do {
-    sock_fd = socket(result->ai_family, result->ai_socktype, 
+    sock_fd = socket(result->ai_family, result->ai_socktype,
                      result->ai_protocol);
     if (sock_fd < 0)
       continue; /* ignore */
     if (connect(sock_fd, result->ai_addr, result->ai_addrlen) == 0)
-      break; /* success */ 
+      break; /* success */
     close(sock_fd);
   } while ((result = result->ai_next) != NULL);
 
@@ -62,7 +62,7 @@ int main(int argc, char *argv[])
 
   if (SSL_get_verify_result(ssl) != X509_V_OK) { /* Verify certificate */
     fprintf(stderr, "Error: Server certificate verification\n"); exit(1);
-  } 
+  }
 
   if (SSL_write(ssl, request, strlen(request)) < strlen(request)) {
     fprintf(stderr, "Error: Write\n"); exit(1);

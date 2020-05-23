@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netdb.h> 
+#include <netdb.h>
 
 int main(int argc, char *argv[])
 {
@@ -26,12 +26,12 @@ int main(int argc, char *argv[])
   resultsave = result;
 
   do {
-    sock_fd = socket(result->ai_family, result->ai_socktype, 
+    sock_fd = socket(result->ai_family, result->ai_socktype,
                      result->ai_protocol);
     if (sock_fd < 0)
       continue; /* ignore */
     if (connect(sock_fd, result->ai_addr, result->ai_addrlen) == 0)
-      break; /* success */ 
+      break; /* success */
     close(sock_fd);
   } while ((result = result->ai_next) != NULL);
 

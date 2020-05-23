@@ -15,12 +15,12 @@ public class EchoClient {
     try {
       Socket echoSocket = new Socket(hostName, portNumber);
 
-      PrintWriter outWriter = 
+      PrintWriter outWriter =
         new PrintWriter(echoSocket.getOutputStream(), true);
-      BufferedReader inReader = 
+      BufferedReader inReader =
         new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
 
-      BufferedReader stdInput = 
+      BufferedReader stdInput =
         new BufferedReader(new InputStreamReader(System.in));
       String inputLine;
 

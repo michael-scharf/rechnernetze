@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
-#include <netdb.h> 
+#include <netdb.h>
 
 int main(int argc, char *argv[])
 {
@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
   resultsave = result;
 
   do {
-    sock_fd = socket(result->ai_family, result->ai_socktype, 
+    sock_fd = socket(result->ai_family, result->ai_socktype,
                      result->ai_protocol);
     if (sock_fd >= 0)
       break; /* success */
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
   freeaddrinfo(resultsave);
 
   while (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-    if (sendto(sock_fd, buffer, strlen(buffer), 0, 
+    if (sendto(sock_fd, buffer, strlen(buffer), 0,
                result->ai_addr, result->ai_addrlen) < 0) {
       perror("Error: SendTo"); exit(1);
     }

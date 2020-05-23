@@ -17,13 +17,13 @@ public class EchoServerDatagram {
       while (true) {
         byte[] buffer = new byte[1024];
 
-        DatagramPacket requestPacket = 
+        DatagramPacket requestPacket =
           new DatagramPacket(buffer, buffer.length);
         datagramSocket.receive(requestPacket);
 
         buffer = requestPacket.getData();
 
-        DatagramPacket replyPacket = 
+        DatagramPacket replyPacket =
           new DatagramPacket(buffer, buffer.length, requestPacket.getAddress(),
                              requestPacket.getPort());
         datagramSocket.send(replyPacket);

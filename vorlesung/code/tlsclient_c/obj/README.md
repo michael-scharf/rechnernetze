@@ -1,3 +1,3 @@
-# Verzeichnis build/
+# Verzeichnis obj/
 
 Verzeichnis für Compiler
