@@ -39,10 +39,10 @@
  
     <target name="clean">
       <delete includeEmptyDirs="true">
-        <fileset dir="${build}" includes="**/*"/>
+        <fileset dir="${build}" includes="**/*.class"/>
       </delete>      
       <delete includeEmptyDirs="true">
-        <fileset dir="${dist}" includes="**/*"/>
+        <fileset dir="${dist}" includes="**/*.jar"/>
       </delete>      
     </target>
 </project>
