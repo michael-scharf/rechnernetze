@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Default",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "/usr/include/**",
+                "/usr/local/include/**",
+                "/usr/include/x86_64-linux-gnu/**"
+            ],
+            "defines": [
+                "NULL=0"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c18",
+            "cppStandard": "c++14",
+            "intelliSenseMode": "gcc-x86",
+            "compilerArgs": [
+                "-march=x86_64"
+            ]
+        }
+    ],
+    "version": 4
+}
