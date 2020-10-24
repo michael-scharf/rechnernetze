@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
   port_number = atoi(argv[1]);
 
-  bzero(&server_addr, sizeof(server_addr));
+  memset(&server_addr, 0, sizeof(server_addr));
   server_addr.sin_family = AF_INET; /* IPv4 only */
   server_addr.sin_addr.s_addr = INADDR_ANY;
   server_addr.sin_port = htons(port_number);

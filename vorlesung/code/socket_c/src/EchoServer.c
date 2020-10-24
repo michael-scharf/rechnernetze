@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Usage: EchoServer <port>\n"); exit(1);
   }
 
-  bzero(&hints, sizeof(hints));
+  memset(&hints, 0, sizeof(hints));
   hints.ai_family = AF_INET6; /* v4 and v6 dual stack */
   hints.ai_socktype = SOCK_STREAM;
   hints.ai_flags = AI_PASSIVE;

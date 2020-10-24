@@ -12,27 +12,27 @@
  
     <target name="dist" depends="compile">
       <jar destfile="${dist}/EchoClient.jar" basedir="${build}"
-          includes="EchoClient.class">
+          includes="de/hs_esslingen/rn/EchoClient.class">
         <manifest>
-          <attribute name="Main-Class" value="EchoClient"/>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoClient"/>
         </manifest>
       </jar>
       <jar destfile="${dist}/EchoServer.jar" basedir="${build}"
-          includes="EchoServer.class">
+          includes="de/hs_esslingen/rn/EchoServer.class">
         <manifest>
-          <attribute name="Main-Class" value="EchoServer"/>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoServer"/>
         </manifest>
       </jar>
       <jar destfile="${dist}/EchoClientDatagram.jar" basedir="${build}"
-          includes="EchoClientDatagram.class">
+          includes="de/hs_esslingen/rn/EchoClientDatagram.class">
         <manifest>
-          <attribute name="Main-Class" value="EchoClientDatagram"/>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoClientDatagram"/>
         </manifest>
       </jar>
       <jar destfile="${dist}/EchoServerDatagram.jar" basedir="${build}"
-          includes="EchoServerDatagram.class">
+          includes="de/hs_esslingen/rn/EchoServerDatagram.class">
         <manifest>
-          <attribute name="Main-Class" value="EchoServerDatagram"/>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoServerDatagram"/>
         </manifest>
       </jar>
     </target>

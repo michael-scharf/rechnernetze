@@ -1,5 +1,9 @@
-import java.io.*;
-import java.net.*;
+package de.hs_esslingen.rn;
+
+import java.io.IOException;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.DatagramPacket;
 
 public class EchoServerDatagram {
 

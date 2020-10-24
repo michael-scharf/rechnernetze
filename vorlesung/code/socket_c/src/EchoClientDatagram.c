@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Usage: EchoClientDatagram <hostname> <port>\n"); exit(1);
   }
 
-  bzero(&hints, sizeof(hints));
+  memset(&hints, 0, sizeof(hints));
   hints.ai_family = AF_UNSPEC; /* IPv4 or IPv6 */
   hints.ai_socktype = SOCK_DGRAM;
 
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
       perror("Error: SendTo"); exit(1);
     }
 
-    bzero(buffer, sizeof(buffer));
+    memset(buffer, 0, sizeof(buffer));
 
     if (recvfrom(sock_fd, buffer, sizeof(buffer), 0,
                  (struct sockaddr *) &server_addr, &server_len) < 0) {

@@ -12,9 +12,9 @@
  
     <target name="dist" depends="compile">
       <jar destfile="${dist}/TlsClient.jar" basedir="${build}"
-          includes="TlsClient.class">
+          includes="de/hs_esslingen/rn/TlsClient.class">
         <manifest>
-          <attribute name="Main-Class" value="TlsClient"/>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.TlsClient"/>
         </manifest>
       </jar>
     </target>

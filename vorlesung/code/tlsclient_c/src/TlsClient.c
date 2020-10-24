@@ -21,11 +21,11 @@ int main(int argc, char *argv[])
                    "Connection: close\r\n\r\n";
 
   SSL_library_init();
-  ctx = SSL_CTX_new(TLSv1_2_client_method());
+  ctx = SSL_CTX_new(TLS_client_method());
   if (!ctx) { fprintf(stderr, "Error: SSL context"); exit(1); }
 
-  /* Load trusted certificates (tested on CentOS Linux) */
-  if (!SSL_CTX_load_verify_locations(ctx, "/etc/pki/tls/cert.pem", NULL)) {
+  /* Load trusted certificates (tested on Debian 10 Linux) */
+  if (!SSL_CTX_load_verify_locations(ctx, NULL, "/etc/ssl/certs")) {
     fprintf(stderr, "Error: Trust store\n"); exit(1);
   }
 

@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Usage: EchoServerDatagram <port>\n"); exit(1);
   }
 
-  bzero(&hints, sizeof(hints));
+  memset(&hints, 0, sizeof(hints));
   hints.ai_family = AF_INET6; /* v4 and v6 dual stack */
   hints.ai_socktype = SOCK_DGRAM;
   hints.ai_flags = AI_PASSIVE;
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
   freeaddrinfo(resultsave);
 
   while (1) {
-    bzero(buffer, sizeof(buffer));
+    memset(buffer, 0, sizeof(buffer));
 
     bytes = recvfrom(server_fd, buffer, sizeof(buffer), 0,
                      (struct sockaddr *) &client_addr, &client_len);

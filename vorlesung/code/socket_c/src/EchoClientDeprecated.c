@@ -25,9 +25,9 @@ int main(int argc, char *argv[])
 
   port_number = atoi(argv[2]);
 
-  bzero(&server_addr, sizeof(server_addr));
+  memset(&server_addr, 0, sizeof(server_addr));
   server_addr.sin_family = AF_INET; /* IPv4 only */
-  bcopy(server->h_addr, &server_addr.sin_addr.s_addr, server->h_length);
+  memcpy(server->h_addr, &server_addr.sin_addr.s_addr, server->h_length);
   server_addr.sin_port = htons(port_number);
 
   sock_fd = socket(AF_INET, SOCK_STREAM, 0);
@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
       perror("Error: Write"); exit(1);
     }
 
-    bzero(buffer, sizeof(buffer));
+    memset(buffer, 0, sizeof(buffer));
 
     if (read(sock_fd, buffer, sizeof(buffer)) < 0) {
       perror("Error: Read"); exit(1);
