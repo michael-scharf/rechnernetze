@@ -1,0 +1,36 @@
+<project name="rn" default="dist" basedir=".">
+  <description>
+    Rechnernetze
+  </description>
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+ 
+    <target name="compile">
+      <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
+    </target>
+ 
+    <target name="dist" depends="compile">
+      <jar destfile="${dist}/SimpleClient.jar" basedir="${build}"
+          includes="de/hs_esslingen/rn/SimpleClient.class">
+        <manifest>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.SimpleClient"/>
+        </manifest>
+      </jar>
+      <jar destfile="${dist}/SimpleServer.jar" basedir="${build}"
+          includes="de/hs_esslingen/rn/SimpleServer*.class">
+        <manifest>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.SimpleServer"/>
+        </manifest>
+      </jar>
+    </target>
+ 
+    <target name="clean">
+      <delete includeEmptyDirs="true">
+        <fileset dir="${build}" includes="**/*.class"/>
+      </delete>      
+      <delete includeEmptyDirs="true">
+        <fileset dir="${dist}" includes="**/*.jar"/>
+      </delete>      
+    </target>
+</project>
