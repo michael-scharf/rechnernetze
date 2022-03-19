@@ -1,7 +1,7 @@
 CC       = gcc
 CFLAGS   = -Wall -g
 LDFLAGS  =
-LDLIBS   = -lpthread
+LDLIBS   = -pthread
 
 SRCDIR   = src
 OBJDIR   = obj
