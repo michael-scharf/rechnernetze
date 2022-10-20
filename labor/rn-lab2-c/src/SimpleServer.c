@@ -7,7 +7,7 @@
 #include <netdb.h>
 #include <pthread.h>
 
-#define PORT_NUMBER "42001"
+#define PORT_NUMBER "32001"
 
 #define REQUEST_LEN 4095
 #define REQUEST_SIZE REQUEST_LEN + 1
@@ -19,6 +19,8 @@
 #define RESPONSE_LINE 80
 #define RESPONSE_MARK 10
 #define RESPONSE_ALIGN 13
+
+#define KEEPALIVE_TIME 1000
 
 void create_response(char *string, int length, int useprefix)
 {
@@ -132,6 +134,8 @@ void *client_thread(void *arg)
     if (delay > 0)
       usleep(delay * 1000);
   }
+
+  usleep(KEEPALIVE_TIME * 1000);
 
   close(client_fd);
   free(response);

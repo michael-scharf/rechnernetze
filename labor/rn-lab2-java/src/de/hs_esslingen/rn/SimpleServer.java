@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class SimpleServer {
-  private static final int PORT_NUMBER = 42001;
+  private static final int PORT_NUMBER = 32001;
 
   private static final String RESPONSE_PREFIX = "HTTP/1.0 200 OK\r\nServer: Rechnernetze SimpleServer\r\nContent-type: text/plain\r\n\r\n";
 
@@ -19,6 +19,8 @@ public class SimpleServer {
   private static final int RESPONSE_LINE = 80;
   private static final int RESPONSE_MARK = 10;
   private static final int RESPONSE_ALIGN = 13;
+
+  private static final int KEEPALIVE_TIME = 1000;
 
   public static void main(final String[] args) {
     new SimpleServer();
@@ -93,6 +95,7 @@ public class SimpleServer {
           if (delay > 0)
             Thread.sleep(delay);
         }
+        Thread.sleep(KEEPALIVE_TIME);
       } catch (final Exception e) {
         System.err.println("Server thread exception: " + e);
       }
