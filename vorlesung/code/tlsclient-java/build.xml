@@ -7,10 +7,12 @@
     <property name="dist" location="dist"/>
  
     <target name="compile">
+      <mkdir dir="build"/>
       <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
     </target>
  
     <target name="dist" depends="compile">
+      <mkdir dir="dist"/>
       <jar destfile="${dist}/TlsClient.jar" basedir="${build}"
           includes="de/hs_esslingen/rn/TlsClient.class">
         <manifest>
@@ -20,11 +22,11 @@
     </target>
  
     <target name="clean">
-      <delete includeEmptyDirs="true">
-        <fileset dir="${build}" includes="**/*.class"/>
+      <delete includeEmptyDirs="true" failonerror="false">
+        <fileset dir="${build}"/>
       </delete>      
-      <delete includeEmptyDirs="true">
-        <fileset dir="${dist}" includes="**/*.jar"/>
+      <delete includeEmptyDirs="true" failonerror="false">
+        <fileset dir="${dist}"/>
       </delete>      
     </target>
 </project>

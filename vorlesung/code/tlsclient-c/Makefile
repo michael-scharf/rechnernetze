@@ -4,22 +4,24 @@ LDFLAGS  =
 LDLIBS   = -lssl -lcrypto
 
 SRCDIR   = src
-OBJDIR   = obj
+BUILDDIR = build
 BINDIR   = bin
 
 SRC      = $(wildcard $(SRCDIR)/*.c)
-OBJ      = $(SRC:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+OBJ      = $(SRC:$(SRCDIR)/%.c=$(BUILDDIR)/%.o)
 BIN      = $(SRC:$(SRCDIR)/%.c=$(BINDIR)/%)
 
-.PHONY: all
+.PHONY: all clean
+
 all: $(BIN)
 
-$(BIN): $(BINDIR)/% : $(OBJDIR)/%.o
+$(BIN): $(BINDIR)/% : $(BUILDDIR)/%.o
+	mkdir -p $(dir $@)
 	$(CC) $(LDFLAGS) $(LDLIBS) $< -o $@
 
-$(OBJ): $(OBJDIR)/%.o : $(SRCDIR)/%.c
+$(OBJ): $(BUILDDIR)/%.o : $(SRCDIR)/%.c
+	mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-.PHONY: clean
 clean:
-	rm -f $(OBJ) $(BIN)
+	rm -rf $(BUILDDIR) $(BINDIR)

@@ -7,42 +7,26 @@
     <property name="dist" location="dist"/>
  
     <target name="compile">
+      <mkdir dir="build"/>
       <javac srcdir="${src}" destdir="${build}" includeantruntime="false"/>
     </target>
  
     <target name="dist" depends="compile">
-      <jar destfile="${dist}/EchoClient.jar" basedir="${build}"
-          includes="de/hs_esslingen/rn/EchoClient.class">
+      <mkdir dir="dist"/>
+      <jar destfile="${dist}/TlsClient.jar" basedir="${build}"
+          includes="de/hs_esslingen/rn/TlsClient.class">
         <manifest>
-          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoClient"/>
-        </manifest>
-      </jar>
-      <jar destfile="${dist}/EchoServer.jar" basedir="${build}"
-          includes="de/hs_esslingen/rn/EchoServer.class">
-        <manifest>
-          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoServer"/>
-        </manifest>
-      </jar>
-      <jar destfile="${dist}/EchoClientDatagram.jar" basedir="${build}"
-          includes="de/hs_esslingen/rn/EchoClientDatagram.class">
-        <manifest>
-          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoClientDatagram"/>
-        </manifest>
-      </jar>
-      <jar destfile="${dist}/EchoServerDatagram.jar" basedir="${build}"
-          includes="de/hs_esslingen/rn/EchoServerDatagram.class">
-        <manifest>
-          <attribute name="Main-Class" value="de.hs_esslingen.rn.EchoServerDatagram"/>
+          <attribute name="Main-Class" value="de.hs_esslingen.rn.TlsClient"/>
         </manifest>
       </jar>
     </target>
  
     <target name="clean">
-      <delete includeEmptyDirs="true">
-        <fileset dir="${build}" includes="**/*.class"/>
+      <delete includeEmptyDirs="true" failonerror="false">
+        <fileset dir="${build}"/>
       </delete>      
-      <delete includeEmptyDirs="true">
-        <fileset dir="${dist}" includes="**/*.jar"/>
+      <delete includeEmptyDirs="true" failonerror="false">
+        <fileset dir="${dist}"/>
       </delete>      
     </target>
 </project>
