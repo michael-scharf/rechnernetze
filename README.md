@@ -4,7 +4,7 @@
 
 In diesem Repository findet sich Material zur Vorlesung Rechnernetze an der [Hochschule Esslingen](https://www.hs-esslingen.de).
 
-* Beispiel-Code für einen einfachen Echo-Server und Echo-Client für die Socket-Schnittstelle in C bzw. Java: https://github.com/michael-scharf/rn-lab2-c
+* Beispiel-Code für einen einfachen Echo-Server und Echo-Client für die Socket-Schnittstelle in C bzw. Java: https://github.com/michael-scharf/rn-demo-code
 
 * Beispiel für einen Echo-Server mit einem kompletten TCP/IP Protokollstapel in C: https://github.com/michael-scharf/lwip-echoserver
 
